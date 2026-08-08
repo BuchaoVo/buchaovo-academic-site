@@ -206,19 +206,19 @@ I am a PhD student at Xiamen University. My research lies at the intersection of
 ::: {.timeline-item}
 <div class="timeline-label">2024.12 · Auckland</div>
 <div>**International Conference on Neural Information Processing (ICONIP)**  
-[Video](https://drive.google.com/file/d/1VKdBQ5rS4T4FxZYBH39LOaNSb-gKR-AF/view)</div>
+</div>
 :::
 
 ::: {.timeline-item}
 <div class="timeline-label">2024.12 · Lisbon</div>
 <div>**IEEE International Conference on Bioinformatics and Biomedicine (BIBM)**  
-[Video](https://drive.google.com/file/d/1VKdBQ5rS4T4FxZYBH39LOaNSb-gKR-AF/view)</div>
+</div>
 :::
 
 ::: {.timeline-item}
 <div class="timeline-label">2024.07 · Haikou</div>
 <div>**International Conference on Computational Intelligence and Applications**  
-[Video](https://drive.google.com/file/d/1VKdBQ5rS4T4FxZYBH39LOaNSb-gKR-AF/view)</div>
+</div>
 :::
 :::
 :::
@@ -232,14 +232,5 @@ I am a PhD student at Xiamen University. My research lies at the intersection of
 <div>**Embedded Development Engineer Intern**  
 [CubyFun](https://www.cubyfun.com/) · Shenzhen, China</div>
 :::
-:::
-:::
-
-::: {.contact-panel}
-## Contact
-
-**Affiliation:** Xiamen University  
-**Google Scholar:** [Buchao Zhan](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en)  
-**GitHub:** [BuchaoVo](https://github.com/BuchaoVo)
 :::
 :::
