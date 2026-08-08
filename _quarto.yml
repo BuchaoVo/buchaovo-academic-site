@@ -11,9 +11,9 @@ project:
     - "!_templates/**"
 
 website:
-  title: "ahn"
+  title: "Buchao Zhan"
   site-url: "https://buchaovo.com"
-  description: "Research, publications, open-source tools, and research notes."
+  description: "Buchao Zhan — AI for Science, protein intelligence, computational biology, and open scientific software."
   navbar:
     pinned: true
     left:
@@ -31,9 +31,7 @@ website:
         href: about.qmd
     right:
       - text: GitHub
-        href: "https://github.com/buchaovo"
-      - text: ORCID
-        href: "https://orcid.org/0009-0008-4129-7281"
+        href: "https://github.com/BuchaoVo"
   search:
     location: navbar
     type: overlay
@@ -41,8 +39,8 @@ website:
   page-navigation: true
   back-to-top-navigation: true
   page-footer:
-    left: "© 2026 ahn"
-    center: "Built with Quarto · Source available under MIT License"
+    left: "© 2026 Buchao Zhan"
+    center: "AI for Science · Protein Intelligence"
     right:
       - text: "buchaovo.com"
         href: "https://buchaovo.com"

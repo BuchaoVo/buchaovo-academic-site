@@ -4,8 +4,8 @@ description: "Replace with a one- or two-sentence contribution summary."
 date: 2026-01-01
 categories: [example]
 author:
-  - name: ahn
-    orcid: 0009-0008-4129-7281
+  - name: YOUR NAME
+    orcid: YOUR_ORCID
 draft: false
 ---
 

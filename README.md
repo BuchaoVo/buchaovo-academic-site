@@ -115,7 +115,7 @@ All content pages use directory-style URLs, e.g.:
 Create a repository such as:
 
 ```text
-buchaovo/buchaovo-academic-site
+YOUR_GITHUB_USERNAME/buchaovo-academic-site
 ```
 
 Then:
@@ -125,7 +125,7 @@ git init
 git add .
 git commit -m "Initial academic website"
 git branch -M main
-git remote add origin git@github.com:buchaovo/buchaovo-academic-site.git
+git remote add origin git@github.com:YOUR_GITHUB_USERNAME/buchaovo-academic-site.git
 git push -u origin main
 ```
 
@@ -180,7 +180,7 @@ In Huawei Cloud DNS, remove any conflicting old records for the apex domain, the
 
 | Type | Name | Value |
 |---|---|---|
-| CNAME | `www` | `buchaovo.github.io` |
+| CNAME | `www` | `YOUR_GITHUB_USERNAME.github.io` |
 
 Do **not** use a wildcard `*` DNS record for GitHub Pages.
 
