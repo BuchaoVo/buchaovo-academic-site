@@ -1,37 +1,62 @@
 ---
 title: "About"
-description: "About Buchao Zhan — research, publications, education, and academic activities."
+description: "Buchao Zhan — PhD student at Xiamen University working on AI for Science, computational biology, protein foundation models, and protein design."
 toc: true
 toc-title: "On this page"
 ---
 
 # Buchao Zhan
 
-I am a researcher working at the intersection of **artificial intelligence, knowledge graphs, large language models, and computational biomedicine**.
+**PhD Student at Xiamen University**
 
-My research interests include **knowledge representation and reasoning, graph-based machine learning, large language models, biomedical AI, and computational biology**. I have authored and co-authored more than ten papers in international conferences and journals, with work spanning medical question answering, knowledge graph reasoning, semantic parsing, microbiome-based cancer detection, gene prioritization, and single-cell perturbation modeling.
+**AI for Science · Protein Intelligence · Computational Biology**
 
-My broader research goal is to develop computational methods that combine **structured biological knowledge, machine learning, and foundation models** to solve challenging problems in biology and medicine.
+I am currently a **PhD student at Xiamen University**. My research lies at the intersection of **artificial intelligence, computational biology, and AI for Science**.
+
+My current interests focus on **protein foundation models, protein sequence–structure modeling, generative protein design, and biological representation learning**. I am also interested in combining foundation models with structured scientific knowledge to support biological discovery and scientific reasoning.
+
+My previous research includes **knowledge graphs, large language models, biomedical reasoning, graph representation learning, and computational biomedicine**.
 
 [Google Scholar](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en) ·
-[GitHub](https://github.com/BuchaoVo)
+[GitHub](https://github.com/BuchaoVo) ·
+[Publications](/publications/) ·
+[Research](/research/) ·
+[Software](/tools/)
 
 ## Research Interests
 
-- Knowledge Graphs
-- Large Language Models
-- Graph Representation Learning
-- Biomedical Artificial Intelligence
-- Computational Biology
-- Biological Foundation Models
-- Knowledge-Guided Reasoning
-- AI for Scientific Discovery
+### Protein Intelligence
+
+- Protein foundation models
+- Protein representation learning
+- Protein sequence–structure modeling
+- Protein language models
+- Multimodal protein models
+- Protein function modeling
+
+### Generative Protein Design
+
+- Structure-conditioned sequence design
+- Inverse folding
+- Generative protein models
+- Protein sequence optimization
+- Protein design evaluation
+- Robustness and uncertainty
+
+### AI for Scientific Discovery
+
+- AI for Science
+- Biological foundation models
+- Scientific reasoning
+- Knowledge-guided AI
+- Knowledge graphs
+- Tool-augmented scientific workflows
 
 ## News
 
 - **2026.02** — Our paper *Het2Gene: A Phenotype-Driven Model for Gene Prioritization by Heterogeneous Graph Embedding* was accepted by **Computers in Biology and Medicine**.
 - **2026.01** — Our paper *Consensus-on-Graph: Plan-Driven Exploration and Consensus Decision-Making on Knowledge Graphs* was accepted by **DASFAA 2026**.
-- **2025.11** — Our paper *FNatPred: A Data-Driven Approach for Distinguishing Between NAT and Tumor on the Fungal Microbiome* was accepted by **IEEE Transactions on Computational Biology and Bioinformatics (TCBB)**.
+- **2025.11** — Our paper *FNatPred: A Data-Driven Approach for Distinguishing Between NAT and Tumor on the Fungal Microbiome* was accepted by **IEEE Transactions on Computational Biology and Bioinformatics**.
 - **2025.10** — Our paper *scCAVAE: Predicting Perturbation Responses by Modeling Synergistic Interactions with Attention and Hierarchical Supervised Contrastive Learning* was accepted by **IEEE BIBM 2025**.
 - **2025.06** — Awarded **Outstanding Master's Graduate of Hainan University**.
 - **2024.09** — Awarded the **National Scholarship for Master's Students** at Hainan University.
@@ -45,10 +70,6 @@ My broader research goal is to develop computational methods that combine **stru
 [Paper](https://ieeexplore.ieee.org/document/10822341) ·
 [Google Scholar](https://scholar.google.com.hk/citations?view_op=view_citation&hl=en&user=8AFOQzoAAAAJ&citation_for_view=8AFOQzoAAAAJ:2osOgNQ5qMEC)
 
-This work was supported by the National Natural Science Foundation of China under Grant No. 62202128.
-
----
-
 ### Text2SPARQL: Grammar Pre-training for Text-to-QDMR Semantic Parsers from Intermediate Question Decompositions
 
 **Buchao Zhan**, Yucong Duan, Xin Yang, et al.
@@ -56,8 +77,6 @@ This work was supported by the National Natural Science Foundation of China unde
 **ICONIP 2024**
 
 [Paper](https://link.springer.com/chapter/10.1007/978-981-96-6599-0_9)
-
----
 
 ### Augmented Mycobiome-Based Cancer Detection by an Interpretable Large Model
 
@@ -67,44 +86,48 @@ Dongmei He, Xin Yang, **Buchao Zhan**, et al.
 
 [Paper](https://ieeexplore.ieee.org/document/10822416)
 
----
-
 ### scCAVAE: Predicting Perturbation Responses by Modeling Synergistic Interactions with Attention and Hierarchical Supervised Contrastive Learning
 
 Xin Li, **Buchao Zhan**, Jiangbo Zhang, et al.
 
 **IEEE BIBM 2025**
 
-## Honors and Awards
-
-- **2024.09** — National Scholarship for Master's Students, Hainan University — **Top 1%**
-- **2025.06** — Outstanding Master's Graduate, Hainan University
+[View all publications →](/publications/)
 
 ## Education
 
-**Xiamen University**, Xiamen, China  
-*M.Sc.*, 2026.09–Present
+### Xiamen University
 
-**Hainan University**, Haikou, China  
-*M.Sc.*, 2022.09–2025.06
+**PhD Student**
 
-**Yichun University**, Yichun, China  
-*B.Eng./B.Sc.*, 2018.09–2022.06
+Xiamen, China
+
+### Hainan University
+
+**Master's Degree**, 2022–2025  
+Haikou, China
+
+### Yichun University
+
+**Undergraduate Degree**, 2018–2022  
+Yichun, China
+
+## Honors and Awards
+
+- **2025.06** — Outstanding Master's Graduate, Hainan University
+- **2024.09** — National Scholarship for Master's Students, Hainan University — **Top 1%**
 
 ## Academic Talks
 
-**International Conference on Neural Information Processing (ICONIP)**  
-Auckland, New Zealand · December 2024  
+- **2024.12** — International Conference on Neural Information Processing, Auckland, New Zealand  
 
-**IEEE International Conference on Bioinformatics and Biomedicine (BIBM)**  
-Lisbon, Portugal · December 2024  
+- **2024.12** — IEEE International Conference on Bioinformatics and Biomedicine, Lisbon, Portugal  
 
-**International Conference on Computational Intelligence and Applications**  
-Haikou, China · July 2024  
+- **2024.07** — International Conference on Computational Intelligence and Applications, Haikou, China  
 
 ## Industry Experience
 
-**CubyFun**, Shenzhen, China  
-*Embedded Development Engineer Intern* · February 2022–May 2022
+### CubyFun
 
-Worked on embedded software development and engineering.
+**Embedded Development Engineer Intern**  
+Shenzhen, China · February 2022–May 2022
