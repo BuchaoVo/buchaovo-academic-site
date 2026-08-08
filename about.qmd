@@ -1,31 +1,110 @@
 ---
 title: "About"
-description: "Academic biography, research interests, and contact information."
-toc: false
+description: "About Buchao Zhan — research, publications, education, and academic activities."
+toc: true
+toc-title: "On this page"
 ---
 
-## Biography
+# Buchao Zhan
 
-**ahn** is a researcher working on computational protein design, protein engineering, and reproducible methods for evaluating sequence–structure models.
+I am a researcher working at the intersection of **artificial intelligence, knowledge graphs, large language models, and computational biomedicine**.
 
-Replace this paragraph with your current position, institution, training, and a concise description of the problems you work on.
+My research interests include **knowledge representation and reasoning, graph-based machine learning, large language models, biomedical AI, and computational biology**. I have authored and co-authored more than ten papers in international conferences and journals, with work spanning medical question answering, knowledge graph reasoning, semantic parsing, microbiome-based cancer detection, gene prioritization, and single-cell perturbation modeling.
 
-## Research interests
+My broader research goal is to develop computational methods that combine **structured biological knowledge, machine learning, and foundation models** to solve challenging problems in biology and medicine.
 
-- Computational protein design
-- Protein sequence–structure modeling
-- Protein engineering
-- Evaluation and benchmarking
-- Reproducible scientific software
+[Google Scholar](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en) ·
+[GitHub](https://github.com/BuchaoVo)
 
-## Profiles
+## Research Interests
 
-- **GitHub:** <https://github.com/buchaovo>
-- **ORCID:** <https://orcid.org/0009-0008-4129-7281>
-- **Google Scholar:** replace with your Scholar profile URL
-- **Email:** `buchao.zhan@gmail.com`
-- **CV:** add `assets/cv.pdf` and link it here when ready.
+- Knowledge Graphs
+- Large Language Models
+- Graph Representation Learning
+- Biomedical Artificial Intelligence
+- Computational Biology
+- Biological Foundation Models
+- Knowledge-Guided Reasoning
+- AI for Scientific Discovery
 
-## Open science
+## News
 
-Code, reusable analysis tools, and technical documentation associated with my research are released publicly when possible. Software repositories should include a license, versioned releases, reproducibility instructions, and citation metadata.
+- **2026.02** — Our paper *Het2Gene: A Phenotype-Driven Model for Gene Prioritization by Heterogeneous Graph Embedding* was accepted by **Computers in Biology and Medicine**.
+- **2026.01** — Our paper *Consensus-on-Graph: Plan-Driven Exploration and Consensus Decision-Making on Knowledge Graphs* was accepted by **DASFAA 2026**.
+- **2025.11** — Our paper *FNatPred: A Data-Driven Approach for Distinguishing Between NAT and Tumor on the Fungal Microbiome* was accepted by **IEEE Transactions on Computational Biology and Bioinformatics (TCBB)**.
+- **2025.10** — Our paper *scCAVAE: Predicting Perturbation Responses by Modeling Synergistic Interactions with Attention and Hierarchical Supervised Contrastive Learning* was accepted by **IEEE BIBM 2025**.
+- **2025.06** — Awarded **Outstanding Master's Graduate of Hainan University**.
+- **2024.09** — Awarded the **National Scholarship for Master's Students** at Hainan University.
+
+## Selected Publications
+
+### RARoK: Retrieval-Augmented Reasoning on Knowledge for Medical Question Answering
+
+**Buchao Zhan**, Anqi Li, Xin Yang, Dongmei He, Yucong Duan, Shankai Yan.
+
+[Paper](https://ieeexplore.ieee.org/document/10822341) ·
+[Google Scholar](https://scholar.google.com.hk/citations?view_op=view_citation&hl=en&user=8AFOQzoAAAAJ&citation_for_view=8AFOQzoAAAAJ:2osOgNQ5qMEC)
+
+This work was supported by the National Natural Science Foundation of China under Grant No. 62202128.
+
+---
+
+### Text2SPARQL: Grammar Pre-training for Text-to-QDMR Semantic Parsers from Intermediate Question Decompositions
+
+**Buchao Zhan**, Yucong Duan, Xin Yang, et al.
+
+**ICONIP 2024**
+
+[Paper](https://link.springer.com/chapter/10.1007/978-981-96-6599-0_9)
+
+---
+
+### Augmented Mycobiome-Based Cancer Detection by an Interpretable Large Model
+
+Dongmei He, Xin Yang, **Buchao Zhan**, et al.
+
+**IEEE BIBM 2024**
+
+[Paper](https://ieeexplore.ieee.org/document/10822416)
+
+---
+
+### scCAVAE: Predicting Perturbation Responses by Modeling Synergistic Interactions with Attention and Hierarchical Supervised Contrastive Learning
+
+Xin Li, **Buchao Zhan**, Jiangbo Zhang, et al.
+
+**IEEE BIBM 2025**
+
+## Honors and Awards
+
+- **2024.09** — National Scholarship for Master's Students, Hainan University — **Top 1%**
+- **2025.06** — Outstanding Master's Graduate, Hainan University
+
+## Education
+
+**Xiamen University**, Xiamen, China  
+*M.Sc.*, 2026.09–Present
+
+**Hainan University**, Haikou, China  
+*M.Sc.*, 2022.09–2025.06
+
+**Yichun University**, Yichun, China  
+*B.Eng./B.Sc.*, 2018.09–2022.06
+
+## Academic Talks
+
+**International Conference on Neural Information Processing (ICONIP)**  
+Auckland, New Zealand · December 2024  
+
+**IEEE International Conference on Bioinformatics and Biomedicine (BIBM)**  
+Lisbon, Portugal · December 2024  
+
+**International Conference on Computational Intelligence and Applications**  
+Haikou, China · July 2024  
+
+## Industry Experience
+
+**CubyFun**, Shenzhen, China  
+*Embedded Development Engineer Intern* · February 2022–May 2022
+
+Worked on embedded software development and engineering.
