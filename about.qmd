@@ -1,133 +1,230 @@
 ---
-title: "About"
-description: "Buchao Zhan — PhD student at Xiamen University working on AI for Science, computational biology, protein foundation models, and protein design."
-toc: true
-toc-title: "On this page"
+title: ""
+description: "Buchao Zhan — PhD student at Xiamen University working on AI for Science, protein intelligence, computational biology, and protein design."
+page-layout: full
+toc: false
 ---
+
+::: {.about-page}
+::: {.about-hero}
+<div class="eyebrow">PhD Student · Xiamen University</div>
 
 # Buchao Zhan
 
-**PhD Student at Xiamen University**
+<div class="about-role">AI for Science · Protein Intelligence · Computational Biology</div>
 
-**AI for Science · Protein Intelligence · Computational Biology**
+<div class="about-deck">
+I am a PhD student at Xiamen University. My research lies at the intersection of artificial intelligence and computational biology, with growing interests in protein foundation models, protein sequence–structure modeling, generative protein design, and AI for scientific discovery.
+</div>
 
-I am currently a **PhD student at Xiamen University**. My research lies at the intersection of **artificial intelligence, computational biology, and AI for Science**.
+<div class="about-actions">
+[Research](/research/){.btn .btn-primary}
+[Publications](/publications/){.btn .btn-outline-primary}
+[GitHub](https://github.com/BuchaoVo){.btn .btn-outline-secondary}
+[Google Scholar](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en){.btn .btn-outline-secondary}
+</div>
+:::
 
-My current interests focus on **protein foundation models, protein sequence–structure modeling, generative protein design, and biological representation learning**. I am also interested in combining foundation models with structured scientific knowledge to support biological discovery and scientific reasoning.
-
-My previous research includes **knowledge graphs, large language models, biomedical reasoning, graph representation learning, and computational biomedicine**.
-
-[Google Scholar](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en) ·
-[GitHub](https://github.com/BuchaoVo) ·
-[Publications](/publications/) ·
-[Research](/research/) ·
-[Software](/tools/)
-
+::: {.about-section}
 ## Research Interests
 
+::: {.interest-grid}
+::: {.interest-card}
 ### Protein Intelligence
 
 - Protein foundation models
 - Protein representation learning
-- Protein sequence–structure modeling
+- Sequence–structure modeling
 - Protein language models
 - Multimodal protein models
-- Protein function modeling
+:::
 
+::: {.interest-card}
 ### Generative Protein Design
 
 - Structure-conditioned sequence design
 - Inverse folding
 - Generative protein models
-- Protein sequence optimization
 - Protein design evaluation
 - Robustness and uncertainty
+:::
 
+::: {.interest-card}
 ### AI for Scientific Discovery
 
 - AI for Science
 - Biological foundation models
 - Scientific reasoning
 - Knowledge-guided AI
-- Knowledge graphs
-- Tool-augmented scientific workflows
+- Scientific tool use
+:::
+:::
+:::
 
+::: {.about-section}
 ## News
 
-- **2026.02** — Our paper *Het2Gene: A Phenotype-Driven Model for Gene Prioritization by Heterogeneous Graph Embedding* was accepted by **Computers in Biology and Medicine**.
-- **2026.01** — Our paper *Consensus-on-Graph: Plan-Driven Exploration and Consensus Decision-Making on Knowledge Graphs* was accepted by **DASFAA 2026**.
-- **2025.11** — Our paper *FNatPred: A Data-Driven Approach for Distinguishing Between NAT and Tumor on the Fungal Microbiome* was accepted by **IEEE Transactions on Computational Biology and Bioinformatics**.
-- **2025.10** — Our paper *scCAVAE: Predicting Perturbation Responses by Modeling Synergistic Interactions with Attention and Hierarchical Supervised Contrastive Learning* was accepted by **IEEE BIBM 2025**.
-- **2025.06** — Awarded **Outstanding Master's Graduate of Hainan University**.
-- **2024.09** — Awarded the **National Scholarship for Master's Students** at Hainan University.
+::: {.apple-list}
+::: {.apple-list-item}
+<div class="apple-list-date">2026.02</div>
+<div>Our paper *Het2Gene: A Phenotype-Driven Model for Gene Prioritization by Heterogeneous Graph Embedding* was accepted by **Computers in Biology and Medicine**.</div>
+:::
 
+::: {.apple-list-item}
+<div class="apple-list-date">2026.01</div>
+<div>Our paper *Consensus-on-Graph: Plan-Driven Exploration and Consensus Decision-Making on Knowledge Graphs* was accepted by **DASFAA 2026**.</div>
+:::
+
+::: {.apple-list-item}
+<div class="apple-list-date">2025.11</div>
+<div>Our paper *FNatPred: A Data-Driven Approach for Distinguishing Between NAT and Tumor on the Fungal Microbiome* was accepted by **IEEE Transactions on Computational Biology and Bioinformatics**.</div>
+:::
+
+::: {.apple-list-item}
+<div class="apple-list-date">2025.10</div>
+<div>Our paper *scCAVAE: Predicting Perturbation Responses by Modeling Synergistic Interactions with Attention and Hierarchical Supervised Contrastive Learning* was accepted by **IEEE BIBM 2025**.</div>
+:::
+
+::: {.apple-list-item}
+<div class="apple-list-date">2025.06</div>
+<div>Awarded **Outstanding Master's Graduate of Hainan University**.</div>
+:::
+
+::: {.apple-list-item}
+<div class="apple-list-date">2024.09</div>
+<div>Awarded the **National Scholarship for Master's Students** at Hainan University.</div>
+:::
+:::
+:::
+
+::: {.about-section}
 ## Selected Publications
 
+::: {.publication-list}
+::: {.publication-item}
 ### RARoK: Retrieval-Augmented Reasoning on Knowledge for Medical Question Answering
 
-**Buchao Zhan**, Anqi Li, Xin Yang, Dongmei He, Yucong Duan, Shankai Yan.
+<div class="publication-meta">**Buchao Zhan**, Anqi Li, Xin Yang, Dongmei He, Yucong Duan, Shankai Yan</div>
 
-[Paper](https://ieeexplore.ieee.org/document/10822341) ·
-[Google Scholar](https://scholar.google.com.hk/citations?view_op=view_citation&hl=en&user=8AFOQzoAAAAJ&citation_for_view=8AFOQzoAAAAJ:2osOgNQ5qMEC)
+[Paper](https://ieeexplore.ieee.org/document/10822341) · [Google Scholar](https://scholar.google.com.hk/citations?view_op=view_citation&hl=en&user=8AFOQzoAAAAJ&citation_for_view=8AFOQzoAAAAJ:2osOgNQ5qMEC)
+:::
 
+::: {.publication-item}
 ### Text2SPARQL: Grammar Pre-training for Text-to-QDMR Semantic Parsers from Intermediate Question Decompositions
 
-**Buchao Zhan**, Yucong Duan, Xin Yang, et al.
-
-**ICONIP 2024**
+<div class="publication-meta">**Buchao Zhan**, Yucong Duan, Xin Yang, et al. · **ICONIP 2024**</div>
 
 [Paper](https://link.springer.com/chapter/10.1007/978-981-96-6599-0_9)
+:::
 
+::: {.publication-item}
 ### Augmented Mycobiome-Based Cancer Detection by an Interpretable Large Model
 
-Dongmei He, Xin Yang, **Buchao Zhan**, et al.
-
-**IEEE BIBM 2024**
+<div class="publication-meta">Dongmei He, Xin Yang, **Buchao Zhan**, et al. · **IEEE BIBM 2024**</div>
 
 [Paper](https://ieeexplore.ieee.org/document/10822416)
+:::
 
+::: {.publication-item}
 ### scCAVAE: Predicting Perturbation Responses by Modeling Synergistic Interactions with Attention and Hierarchical Supervised Contrastive Learning
 
-Xin Li, **Buchao Zhan**, Jiangbo Zhang, et al.
-
-**IEEE BIBM 2025**
+<div class="publication-meta">Xin Li, **Buchao Zhan**, Jiangbo Zhang, et al. · **IEEE BIBM 2025**</div>
+:::
+:::
 
 [View all publications →](/publications/)
+:::
 
+::: {.about-section .education-section}
 ## Education
+
+::: {.education-grid}
+::: {.education-card .education-current}
+<div class="education-head">
+  <span class="education-period">Current</span>
+  <span class="education-badge">PhD</span>
+</div>
 
 ### Xiamen University
 
-**PhD Student**
+<div class="education-degree">PhD Student</div>
+<div class="education-location">Xiamen, China</div>
+:::
 
-Xiamen, China
+::: {.education-card}
+<div class="education-head">
+  <span class="education-period">2022–2025</span>
+  <span class="education-badge">M.Sc.</span>
+</div>
 
 ### Hainan University
 
-**Master's Degree**, 2022–2025  
-Haikou, China
+<div class="education-degree">Master’s Degree</div>
+<div class="education-location">Haikou, China</div>
+:::
+
+::: {.education-card}
+<div class="education-head">
+  <span class="education-period">2018–2022</span>
+  <span class="education-badge">B.Sc.</span>
+</div>
 
 ### Yichun University
 
-**Undergraduate Degree**, 2018–2022  
-Yichun, China
+<div class="education-degree">Undergraduate Degree</div>
+<div class="education-location">Yichun, China</div>
+:::
+:::
+:::
 
-## Honors and Awards
+::: {.about-section}
+## Honors & Awards
 
-- **2025.06** — Outstanding Master's Graduate, Hainan University
-- **2024.09** — National Scholarship for Master's Students, Hainan University — **Top 1%**
+::: {.apple-list}
+::: {.apple-list-item}
+<div class="apple-list-date">2025.06</div>
+<div>**Outstanding Master's Graduate**, Hainan University</div>
+:::
 
+::: {.apple-list-item}
+<div class="apple-list-date">2024.09</div>
+<div>**National Scholarship for Master's Students**, Hainan University · Top 1%</div>
+:::
+:::
+:::
+
+::: {.about-section}
 ## Academic Talks
 
-- **2024.12** — International Conference on Neural Information Processing, Auckland, New Zealand  
+::: {.timeline}
+::: {.timeline-item}
+<div class="timeline-label">2024.12 · Auckland</div>
+<div>**International Conference on Neural Information Processing (ICONIP)**  
+</div>
+:::
 
-- **2024.12** — IEEE International Conference on Bioinformatics and Biomedicine, Lisbon, Portugal  
+::: {.timeline-item}
+<div class="timeline-label">2024.12 · Lisbon</div>
+<div>**IEEE International Conference on Bioinformatics and Biomedicine (BIBM)**  
+</div>
+:::
 
-- **2024.07** — International Conference on Computational Intelligence and Applications, Haikou, China  
+::: {.timeline-item}
+<div class="timeline-label">2024.07 · Haikou</div>
+<div>**International Conference on Computational Intelligence and Applications**  
+</div>
+:::
+:::
+:::
 
+::: {.about-section}
 ## Industry Experience
 
-### CubyFun
-
-**Embedded Development Engineer Intern**  
-Shenzhen, China · February 2022–May 2022
+::: {.timeline}
+::: {.timeline-item}
+<div class="timeline-label">2022.02–2022.05</div>
+<div>**Embedded Development Engineer Intern**  
+[CubyFun](https://www.cubyfun.com/) · Shenzhen, China</div>
+:::
+:::
+:::
