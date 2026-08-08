@@ -4,68 +4,79 @@ page-layout: full
 toc: false
 ---
 
-::: {.hero}
-# ahn
+::: {.hero .hero-with-photo}
+<div class="hero-main">
+  <div class="hero-kicker">PhD Student · Xiamen University</div>
 
-<div class="hero-kicker">Computational Protein Design · Protein Engineering</div>
+# Buchao Zhan
 
 <div class="hero-copy">
-I develop computational methods and open-source research tools for protein sequence–structure modeling, design, and rigorous evaluation.
+AI for Science · Protein Intelligence · Computational Biology. I study protein foundation models, sequence–structure modeling, generative protein design, and computational methods for scientific discovery.
 </div>
 
 <div class="hero-links">
 [Research](research/index.qmd){.btn .btn-primary}
 [Publications](publications/index.qmd){.btn .btn-outline-primary}
-[GitHub](https://github.com/buchaovo){.btn .btn-outline-secondary}
+[About](about.qmd){.btn .btn-outline-secondary}
+[GitHub](https://github.com/BuchaoVo){.btn .btn-outline-secondary}
+</div>
+</div>
+
+<div class="hero-photo-wrap">
+  ![](assets/profile.jpg){.profile-photo .home-profile-photo alt="Portrait of Buchao Zhan"}
 </div>
 :::
 
-## Selected Research
+## Research
 
 ::: {.feature-grid}
 ::: {.feature-card}
-### Protein Design Evaluation
+### Protein Foundation Models
 
-Methods for rigorous, reproducible evaluation of structure-conditioned protein design models.
+Learning transferable representations across protein sequence, structure, function, and evolutionary context.
+
+[Explore research →](research/sequence-structure/index.qmd)
+:::
+
+::: {.feature-card}
+### Generative Protein Design
+
+Structure-conditioned sequence design, evaluation, robustness, and uncertainty in computational protein engineering.
 
 [Explore research →](research/design-evaluation/index.qmd)
 :::
 
 ::: {.feature-card}
-### Sequence–Structure Modeling
+### AI for Scientific Discovery
 
-Research on representations, compatibility, uncertainty, and design under structural constraints.
+Connecting foundation models, structured scientific knowledge, biological data, and computational tools.
 
-[Explore research →](research/sequence-structure/index.qmd)
-:::
-:::
-
-## Selected Publications
-
-::: {.home-list}
-**Add your strongest 2–4 papers here.** Keep this curated; the complete list belongs on [Publications](publications/index.qmd).
+[Research overview →](research/index.qmd)
 :::
 
-## Open-source Tools
-
-::: {.feature-grid}
 ::: {.feature-card}
-### Your Tool
+### Open Scientific Software
 
-One sentence explaining the scientific problem the tool solves.
+Reproducible tools, benchmarks, and workflows for computational research and protein-model evaluation.
 
-[Tool page →](tools/example-tool/index.qmd)
+[Explore tools →](tools/index.qmd)
 :::
 :::
 
-## Recent Research Notes
+## Publications
 
 ::: {.home-list}
-See the continuously updated [Research Notes](notes/index.qmd) for methods, experiments, evaluation design, and technical reasoning.
+My work spans knowledge graphs, biomedical reasoning, computational biology, and emerging protein-centric AI. See the complete and continuously updated record on the [Publications](publications/index.qmd) page.
+:::
+
+## Research Notes
+
+::: {.home-list}
+I use [Research Notes](notes/index.qmd) for methods, experiments, evaluation design, and technical reasoning, and [Reading](reading/index.qmd) for structured notes on external papers.
 :::
 
 ## About
 
-I am **ahn**, a researcher working on computational protein design and protein engineering. Replace this paragraph with a 2–4 sentence academic biography.
+I am a PhD student at **Xiamen University**. My current research interests are increasingly centered on **protein foundation models, generative protein design, and AI for Science**.
 
-[About](about.qmd) · [ORCID](https://orcid.org/0009-0008-4129-7281) · [Google Scholar](https://scholar.google.com/) · [GitHub](https://github.com/buchaovo)
+[About me →](about.qmd) · [Google Scholar](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en) · [GitHub](https://github.com/BuchaoVo)

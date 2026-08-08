@@ -6,7 +6,8 @@ toc: false
 ---
 
 ::: {.about-page}
-::: {.about-hero}
+::: {.about-hero .about-hero-with-photo}
+<div class="about-hero-main">
 <div class="eyebrow">PhD Student · Xiamen University</div>
 
 # Buchao Zhan
@@ -22,6 +23,11 @@ I am a PhD student at Xiamen University. My research lies at the intersection of
 [Publications](/publications/){.btn .btn-outline-primary}
 [GitHub](https://github.com/BuchaoVo){.btn .btn-outline-secondary}
 [Google Scholar](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en){.btn .btn-outline-secondary}
+</div>
+</div>
+
+<div class="about-photo-wrap">
+![](assets/profile.jpg){.profile-photo .about-profile-photo alt="Portrait of Buchao Zhan"}
 </div>
 :::
 
@@ -200,19 +206,19 @@ I am a PhD student at Xiamen University. My research lies at the intersection of
 ::: {.timeline-item}
 <div class="timeline-label">2024.12 · Auckland</div>
 <div>**International Conference on Neural Information Processing (ICONIP)**  
-</div>
+[Video](https://drive.google.com/file/d/1VKdBQ5rS4T4FxZYBH39LOaNSb-gKR-AF/view)</div>
 :::
 
 ::: {.timeline-item}
 <div class="timeline-label">2024.12 · Lisbon</div>
 <div>**IEEE International Conference on Bioinformatics and Biomedicine (BIBM)**  
-</div>
+[Video](https://drive.google.com/file/d/1VKdBQ5rS4T4FxZYBH39LOaNSb-gKR-AF/view)</div>
 :::
 
 ::: {.timeline-item}
 <div class="timeline-label">2024.07 · Haikou</div>
 <div>**International Conference on Computational Intelligence and Applications**  
-</div>
+[Video](https://drive.google.com/file/d/1VKdBQ5rS4T4FxZYBH39LOaNSb-gKR-AF/view)</div>
 :::
 :::
 :::
@@ -226,5 +232,14 @@ I am a PhD student at Xiamen University. My research lies at the intersection of
 <div>**Embedded Development Engineer Intern**  
 [CubyFun](https://www.cubyfun.com/) · Shenzhen, China</div>
 :::
+:::
+:::
+
+::: {.contact-panel}
+## Contact
+
+**Affiliation:** Xiamen University  
+**Google Scholar:** [Buchao Zhan](https://scholar.google.com.hk/citations?user=8AFOQzoAAAAJ&hl=en)  
+**GitHub:** [BuchaoVo](https://github.com/BuchaoVo)
 :::
 :::
