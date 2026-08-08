@@ -1,0 +1,45 @@
+---
+title: "REPLACE: Paper title"
+description: "One-sentence summary of the paper and why it matters."
+date: 2026-08-09
+categories: [example]
+status: living
+---
+
+::: {.callout-warning}
+This is starter content. Replace or delete it before public launch.
+:::
+
+## Citation
+
+Authors. Title. Venue. Year. DOI / arXiv.
+
+## One-sentence summary
+
+State the central contribution without copying the abstract.
+
+## Problem
+
+What problem are the authors trying to solve?
+
+## Core idea
+
+What makes the method work?
+
+## Key results
+
+Which results materially support the paper's claims?
+
+## Limitations
+
+What assumptions, missing controls, scope limits, or unresolved questions matter?
+
+## What I learned
+
+Record your own interpretation and connections to your research.
+
+## Questions
+
+- What would falsify the core claim?
+- What experiment would be most informative next?
+- Which assumptions are most fragile?

@@ -1,0 +1,15 @@
+---
+title: "Publications"
+description: "Papers, preprints, software papers, and associated research artifacts."
+listing:
+  contents:
+    - "*/index.qmd"
+  type: default
+  sort: "date desc"
+  fields: [date, title, description, categories]
+  filter-ui: true
+  sort-ui: true
+page-layout: full
+---
+
+Each publication should have a permanent page connecting the paper to code, data, citation metadata, and the broader research question.

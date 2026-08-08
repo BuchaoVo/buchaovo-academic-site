@@ -1,0 +1,13 @@
+/.quarto/
+/_site/
+.DS_Store
+Thumbs.db
+*.pyc
+__pycache__/
+.venv/
+.env
+
+# Intentionally DO NOT ignore _freeze/ if you later add executable notebooks
+# and use `execute: freeze: auto`.
+
+**/*.quarto_ipynb

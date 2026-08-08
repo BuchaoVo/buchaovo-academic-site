@@ -1,0 +1,31 @@
+---
+title: "About"
+description: "Academic biography, research interests, and contact information."
+toc: false
+---
+
+## Biography
+
+**ahn** is a researcher working on computational protein design, protein engineering, and reproducible methods for evaluating sequence–structure models.
+
+Replace this paragraph with your current position, institution, training, and a concise description of the problems you work on.
+
+## Research interests
+
+- Computational protein design
+- Protein sequence–structure modeling
+- Protein engineering
+- Evaluation and benchmarking
+- Reproducible scientific software
+
+## Profiles
+
+- **GitHub:** <https://github.com/buchaovo>
+- **ORCID:** <https://orcid.org/0009-0008-4129-7281>
+- **Google Scholar:** replace with your Scholar profile URL
+- **Email:** `buchao.zhan@gmail.com`
+- **CV:** add `assets/cv.pdf` and link it here when ready.
+
+## Open science
+
+Code, reusable analysis tools, and technical documentation associated with my research are released publicly when possible. Software repositories should include a license, versioned releases, reproducibility instructions, and citation metadata.

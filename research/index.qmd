@@ -1,0 +1,16 @@
+---
+title: "Research"
+description: "Research questions, programs, and ongoing projects."
+listing:
+  contents:
+    - "*/index.qmd"
+  type: grid
+  sort: "title"
+  fields: [title, description, categories]
+  grid-columns: 2
+  filter-ui: true
+  sort-ui: false
+page-layout: full
+---
+
+Research is organized by **scientific question**, not by publication date. Each project connects papers, software, data, and technical notes into a durable research record.

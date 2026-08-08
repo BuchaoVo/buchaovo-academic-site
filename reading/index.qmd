@@ -1,0 +1,15 @@
+---
+title: "Reading"
+description: "Structured reading notes on papers and methods."
+listing:
+  contents:
+    - "*/index.qmd"
+  type: default
+  sort: "date desc"
+  fields: [date, title, description, categories]
+  filter-ui: true
+  sort-ui: true
+page-layout: full
+---
+
+Reading notes are centered on **external papers**. Original methodological arguments and experiment notes belong under [Research Notes](../notes/index.qmd).

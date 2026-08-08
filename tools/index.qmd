@@ -1,0 +1,16 @@
+---
+title: "Open-source Tools"
+description: "Scientific software, reproducible workflows, and research utilities."
+listing:
+  contents:
+    - "*/index.qmd"
+  type: grid
+  sort: "title"
+  fields: [title, description, categories]
+  grid-columns: 2
+  filter-ui: true
+  sort-ui: false
+page-layout: full
+---
+
+Tools are treated as first-class research outputs. Mature projects should expose documentation, releases, tests, licensing, and citation information.

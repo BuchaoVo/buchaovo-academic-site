@@ -1,0 +1,18 @@
+---
+title: "Research Notes"
+description: "Living notes on methods, experiments, evaluation, and technical reasoning."
+listing:
+  contents:
+    - "*/index.qmd"
+  type: default
+  sort: "date desc"
+  fields: [date, title, description, categories]
+  filter-ui: true
+  sort-ui: true
+  feed:
+    type: partial
+    items: 20
+page-layout: full
+---
+
+Research Notes are written around **problems and methods**, not posting cadence. Notes may be explicitly marked as `draft`, `living`, `stable`, or `archived` in their source metadata.

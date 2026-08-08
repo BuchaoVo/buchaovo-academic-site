@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you reuse this website template, cite the repository or acknowledge the template as appropriate."
+title: "Buchaovo Academic Site"
+type: software
+authors:
+  - family-names: "REPLACE"
+    given-names: "REPLACE"
+license: MIT
+repository-code: "https://github.com/buchaovo/buchaovo-academic-site"
+url: "https://buchaovo.com"

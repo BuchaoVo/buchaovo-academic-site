@@ -1,0 +1,37 @@
+---
+title: "Protein Design Evaluation"
+description: "Rigorous evaluation, robustness analysis, and reproducibility for protein design methods."
+categories: [protein-design, evaluation, benchmarking]
+status: active
+---
+
+## Question
+
+How should protein design methods be evaluated so that reported improvements are robust to structural uncertainty, sampling variation, and metric choice?
+
+## Motivation
+
+Replace this section with the scientific gap motivating the project. Prefer a problem statement over a chronological project diary.
+
+## Approach
+
+1. Define the evaluation target and null/baseline clearly.
+2. Separate model score from biological interpretation.
+3. Quantify variability across relevant perturbations or structural representations.
+4. Preserve reproducible analysis artifacts and provenance.
+
+## Key results
+
+Add only results that are stable enough to present publicly. Link each claim to a paper, preprint, analysis note, or repository when available.
+
+## Publications
+
+Add related papers here.
+
+## Software
+
+Add related tools and repositories here.
+
+## Notes
+
+Add related [Research Notes](../../notes/index.qmd) here.

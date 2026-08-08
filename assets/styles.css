@@ -1,0 +1,94 @@
+:root {
+  --site-max: 1180px;
+  --reading-max: 820px;
+  --border-soft: rgba(127, 127, 127, 0.22);
+  --surface-soft: rgba(127, 127, 127, 0.06);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.navbar-brand {
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.hero {
+  max-width: var(--site-max);
+  margin: 3.5rem auto 5rem auto;
+  padding: 2rem 0 0 0;
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  margin-bottom: 1.25rem;
+}
+
+.hero-kicker {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-copy {
+  max-width: 760px;
+  font-size: clamp(1.18rem, 2vw, 1.55rem);
+  line-height: 1.55;
+  margin-bottom: 1.7rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 2.5rem 0;
+}
+
+.feature-card {
+  border: 1px solid var(--border-soft);
+  border-radius: 0.7rem;
+  padding: 1.35rem 1.45rem;
+  background: var(--surface-soft);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+}
+
+.home-list {
+  max-width: var(--reading-max);
+  margin-bottom: 2.5rem;
+}
+
+.quarto-title-banner {
+  background: transparent;
+}
+
+main.content p,
+main.content li {
+  line-height: 1.72;
+}
+
+code {
+  font-size: 0.92em;
+}
+
+@media (max-width: 760px) {
+  .hero {
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}

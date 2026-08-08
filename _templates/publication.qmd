@@ -1,0 +1,26 @@
+---
+title: "PAPER TITLE"
+description: "ONE-SENTENCE CONTRIBUTION"
+date: YYYY-MM-DD
+categories: [topic]
+author:
+  - name: ahn
+    orcid: 0009-0008-4129-7281
+---
+
+## Abstract
+
+## Key contribution
+
+## Links
+
+- Paper:
+- DOI:
+- Preprint:
+- Code:
+- Data:
+- Supplement:
+
+## Citation
+
+## Related research

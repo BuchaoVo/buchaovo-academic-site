@@ -1,0 +1,25 @@
+---
+title: "Sequence–Structure Modeling"
+description: "Representations and methods connecting protein sequences, structures, and design objectives."
+categories: [protein-design, structure, modeling]
+status: exploratory
+---
+
+## Question
+
+How can sequence and structural information be represented and combined to support reliable protein design?
+
+## Current directions
+
+- Structure-conditioned sequence design
+- Sequence–structure compatibility
+- Model uncertainty and robustness
+- Comparative evaluation across structural inputs
+
+## Publications
+
+Add related papers here.
+
+## Software
+
+Add related repositories and tools here.

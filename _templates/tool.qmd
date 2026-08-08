@@ -1,0 +1,24 @@
+---
+title: "TOOL NAME"
+description: "ONE-SENTENCE DESCRIPTION"
+categories: [scientific-software]
+status: active
+---
+
+## Why
+
+## Features
+
+## Quick start
+
+```bash
+# commands
+```
+
+## Method
+
+## Validation
+
+## Citation
+
+## Links

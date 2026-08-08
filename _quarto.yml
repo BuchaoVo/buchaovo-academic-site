@@ -1,0 +1,67 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "research/**/*.qmd"
+    - "publications/**/*.qmd"
+    - "tools/**/*.qmd"
+    - "notes/**/*.qmd"
+    - "reading/**/*.qmd"
+    - "!_templates/**"
+
+website:
+  title: "ahn"
+  site-url: "https://buchaovo.com"
+  description: "Research, publications, open-source tools, and research notes."
+  navbar:
+    pinned: true
+    left:
+      - text: Research
+        href: research/index.qmd
+      - text: Publications
+        href: publications/index.qmd
+      - text: Tools
+        href: tools/index.qmd
+      - text: Notes
+        href: notes/index.qmd
+      - text: Reading
+        href: reading/index.qmd
+      - text: About
+        href: about.qmd
+    right:
+      - text: GitHub
+        href: "https://github.com/buchaovo"
+      - text: ORCID
+        href: "https://orcid.org/0009-0008-4129-7281"
+  search:
+    location: navbar
+    type: overlay
+  open-graph: true
+  page-navigation: true
+  back-to-top-navigation: true
+  page-footer:
+    left: "© 2026 ahn"
+    center: "Built with Quarto · Source available under MIT License"
+    right:
+      - text: "buchaovo.com"
+        href: "https://buchaovo.com"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: darkly
+    css: assets/styles.css
+    toc: true
+    toc-depth: 3
+    anchor-sections: true
+    smooth-scroll: true
+    code-copy: true
+    code-overflow: wrap
+    link-external-newwindow: true
+
+execute:
+  freeze: auto
+
+bibliography: bibliography/references.bib

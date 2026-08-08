@@ -1,0 +1,38 @@
+---
+title: "REPLACE: Example Publication Title"
+description: "Replace with a one- or two-sentence contribution summary."
+date: 2026-01-01
+categories: [example]
+author:
+  - name: ahn
+    orcid: 0009-0008-4129-7281
+draft: false
+---
+
+::: {.callout-warning}
+This is starter content. Replace or delete it before public launch.
+:::
+
+## Abstract
+
+Replace with the abstract or a concise public summary that you are permitted to host.
+
+## Key contribution
+
+State the main contribution in 2–4 sentences.
+
+## Links
+
+- Paper / publisher: `ADD_URL`
+- DOI: `ADD_DOI`
+- Preprint: `ADD_URL`
+- Code: `ADD_URL`
+- Data: `ADD_URL`
+
+## Citation
+
+Add the canonical citation here and add the BibTeX entry to `bibliography/references.bib`.
+
+## Related research
+
+Link the corresponding page under [Research](../../research/index.qmd).

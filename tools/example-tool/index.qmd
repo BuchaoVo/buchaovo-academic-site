@@ -1,0 +1,48 @@
+---
+title: "REPLACE: Example Research Tool"
+description: "One sentence explaining what the tool does and for whom."
+categories: [scientific-software, example]
+status: active
+---
+
+::: {.callout-warning}
+This is starter content. Replace or delete it before public launch.
+:::
+
+## Why
+
+Describe the scientific or engineering problem this tool solves.
+
+## Features
+
+- Reproducible command-line interface
+- Machine-readable outputs
+- Explicit versioning and provenance
+- Tests for critical behavior
+
+## Quick start
+
+```bash
+# Replace with the real installation and invocation.
+pip install your-package
+your-package --help
+```
+
+## Method
+
+Document definitions, assumptions, algorithms, and any numerical conventions that matter for interpretation.
+
+## Validation
+
+Describe unit tests, integration tests, benchmark datasets, or cross-checks used to establish correctness.
+
+## Citation
+
+Add `CITATION.cff` to the software repository and provide a stable citation here.
+
+## Links
+
+- GitHub: `ADD_URL`
+- Documentation: `ADD_URL`
+- Releases: `ADD_URL`
+- Paper: `ADD_URL`

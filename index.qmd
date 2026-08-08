@@ -1,0 +1,71 @@
+---
+title: ""
+page-layout: full
+toc: false
+---
+
+::: {.hero}
+# ahn
+
+<div class="hero-kicker">Computational Protein Design · Protein Engineering</div>
+
+<div class="hero-copy">
+I develop computational methods and open-source research tools for protein sequence–structure modeling, design, and rigorous evaluation.
+</div>
+
+<div class="hero-links">
+[Research](research/index.qmd){.btn .btn-primary}
+[Publications](publications/index.qmd){.btn .btn-outline-primary}
+[GitHub](https://github.com/buchaovo){.btn .btn-outline-secondary}
+</div>
+:::
+
+## Selected Research
+
+::: {.feature-grid}
+::: {.feature-card}
+### Protein Design Evaluation
+
+Methods for rigorous, reproducible evaluation of structure-conditioned protein design models.
+
+[Explore research →](research/design-evaluation/index.qmd)
+:::
+
+::: {.feature-card}
+### Sequence–Structure Modeling
+
+Research on representations, compatibility, uncertainty, and design under structural constraints.
+
+[Explore research →](research/sequence-structure/index.qmd)
+:::
+:::
+
+## Selected Publications
+
+::: {.home-list}
+**Add your strongest 2–4 papers here.** Keep this curated; the complete list belongs on [Publications](publications/index.qmd).
+:::
+
+## Open-source Tools
+
+::: {.feature-grid}
+::: {.feature-card}
+### Your Tool
+
+One sentence explaining the scientific problem the tool solves.
+
+[Tool page →](tools/example-tool/index.qmd)
+:::
+:::
+
+## Recent Research Notes
+
+::: {.home-list}
+See the continuously updated [Research Notes](notes/index.qmd) for methods, experiments, evaluation design, and technical reasoning.
+:::
+
+## About
+
+I am **ahn**, a researcher working on computational protein design and protein engineering. Replace this paragraph with a 2–4 sentence academic biography.
+
+[About](about.qmd) · [ORCID](https://orcid.org/0009-0008-4129-7281) · [Google Scholar](https://scholar.google.com/) · [GitHub](https://github.com/buchaovo)

@@ -1,0 +1,27 @@
+---
+title: "PAPER TITLE"
+description: "ONE-SENTENCE SUMMARY"
+date: YYYY-MM-DD
+categories: [topic]
+status: living
+---
+
+## Citation
+
+## One-sentence summary
+
+## Problem
+
+## Core idea
+
+## Method
+
+## Key results
+
+## What I learned
+
+## Limitations
+
+## Questions
+
+## Connections

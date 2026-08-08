@@ -1,0 +1,24 @@
+---
+title: "NOTE TITLE"
+description: "ONE-SENTENCE DESCRIPTION"
+date: YYYY-MM-DD
+categories: [topic]
+status: living
+lang: en
+---
+
+## Problem
+
+## Background
+
+## Analysis
+
+## Experiments
+
+## Interpretation
+
+## Limitations
+
+## References
+
+## Revision history
