@@ -14,6 +14,19 @@ toc: true
 toc-depth: 3
 code-copy: true
 ---
+<style>
+.quarto-title h1.title {
+  font-size: 2.75rem !important;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .quarto-title h1.title {
+    font-size: 2.2rem !important;
+  }
+}
+</style>
 
 A common research-computing workflow is to keep source code, Conda environments, datasets, checkpoints, and GPU workloads on a **remote Linux server**, while using **VS Code on a local Windows machine** as the editor.
 
