@@ -1,5 +1,6 @@
 ---
-title: "Mihomo on Linux Servers: Installation, Usage, and Configuration"
+title: "Mihomo on Linux Servers"
+subtitle: "Installation, Usage, and Configuration"
 description: "A practical guide to installing Mihomo on a Linux server, running it with systemd, and managing proxy providers, groups, rules, DNS, and optional TUN routing."
 date: 2026-08-14
 categories: [Linux, Networking, Mihomo, Tools]
