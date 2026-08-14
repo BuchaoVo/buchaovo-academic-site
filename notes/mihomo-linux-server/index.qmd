@@ -9,6 +9,20 @@ toc-depth: 3
 code-copy: true
 ---
 
+<style>
+.quarto-title h1.title {
+  font-size: 2.75rem !important;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .quarto-title h1.title {
+    font-size: 2.2rem !important;
+  }
+}
+</style>
+
 Mihomo is a rule-based network proxy core, formerly known as Clash Meta. On a Linux server, a useful deployment pattern is to run Mihomo as a local daemon and expose a **local HTTP/SOCKS mixed proxy port** to command-line tools such as `curl`, `git`, `pip`, `conda`, and download scripts.
 
 For remote research servers, this is usually safer than enabling TUN immediately: application-level proxying does not rewrite the server's global routing table and is therefore much less likely to interrupt SSH connectivity.
