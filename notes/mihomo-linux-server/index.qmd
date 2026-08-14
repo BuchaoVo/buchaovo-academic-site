@@ -1,0 +1,891 @@
+---
+title: "Mihomo on Linux Servers: Installation, Usage, and Configuration"
+description: "A practical guide to installing Mihomo on a Linux server, running it with systemd, and managing proxy providers, groups, rules, DNS, and optional TUN routing."
+date: 2026-08-14
+categories: [Linux, Networking, Mihomo, Tools]
+status: living
+toc: true
+toc-depth: 3
+code-copy: true
+---
+
+Mihomo is a rule-based network proxy core, formerly known as Clash Meta. On a Linux server, a useful deployment pattern is to run Mihomo as a local daemon and expose a **local HTTP/SOCKS mixed proxy port** to command-line tools such as `curl`, `git`, `pip`, `conda`, and download scripts.
+
+For remote research servers, this is usually safer than enabling TUN immediately: application-level proxying does not rewrite the server's global routing table and is therefore much less likely to interrupt SSH connectivity.
+
+This note covers:
+
+- installing the Mihomo binary on Linux;
+- running Mihomo manually and with `systemd`;
+- using Mihomo from shell programs;
+- understanding `config.yaml`;
+- loading subscription nodes with `proxy-providers`;
+- defining manual/automatic proxy groups;
+- writing routing rules;
+- configuring DNS;
+- optionally enabling TUN mode.
+
+::: {.callout-important}
+## Recommended server strategy
+
+Start with **`mixed-port` + shell proxy environment variables**. Only enable TUN after the normal proxy mode works correctly and you have a recovery path for the server (another SSH session, tmux/screen, cloud console, or physical access).
+:::
+
+## 1. Deployment layout
+
+A simple installation can use the following layout:
+
+```text
+/usr/local/bin/mihomo
+/etc/mihomo/
+├── config.yaml
+├── providers/
+└── rules/
+```
+
+The command
+
+```bash
+mihomo -d /etc/mihomo
+```
+
+sets `/etc/mihomo` as Mihomo's home directory. Relative paths in the configuration, for example `./providers/main.yaml`, are then resolved inside this directory.
+
+## 2. Install Mihomo
+
+### 2.1 Check the server architecture
+
+```bash
+uname -m
+```
+
+Common values are:
+
+| `uname -m` | Mihomo architecture |
+|---|---|
+| `x86_64` | `amd64` |
+| `aarch64` / `arm64` | `arm64` |
+
+The official installation page provides stable precompiled Linux binaries for multiple architectures and package formats. For x86-64 servers, the `amd64-compatible` build is a conservative choice when CPU instruction-set support is uncertain.
+
+### 2.2 Download the latest stable release
+
+The following example queries the latest non-prerelease GitHub release and downloads the corresponding Linux binary.
+
+```bash
+cd /tmp
+
+VERSION=$(curl -fsSL \
+  https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
+  | python3 -c 'import json,sys; print(json.load(sys.stdin)["tag_name"])')
+
+echo "Latest Mihomo: ${VERSION}"
+
+case "$(uname -m)" in
+  x86_64)
+    ASSET="mihomo-linux-amd64-compatible-${VERSION}.gz"
+    ;;
+  aarch64|arm64)
+    ASSET="mihomo-linux-arm64-${VERSION}.gz"
+    ;;
+  *)
+    echo "Unsupported architecture: $(uname -m)"
+    exit 1
+    ;;
+esac
+
+curl -fL \
+  "https://github.com/MetaCubeX/mihomo/releases/download/${VERSION}/${ASSET}" \
+  -o mihomo.gz
+
+gzip -d -f mihomo.gz
+sudo install -m 0755 mihomo /usr/local/bin/mihomo
+```
+
+Check the installation:
+
+```bash
+mihomo -v
+```
+
+::: {.callout-note}
+If GitHub access is restricted on the server, download the correct release artifact on another machine and copy it to the server with `scp`, then run `sudo install -m 0755 mihomo /usr/local/bin/mihomo`.
+:::
+
+### 2.3 Create the configuration directory
+
+```bash
+sudo mkdir -p /etc/mihomo/providers
+sudo mkdir -p /etc/mihomo/rules
+```
+
+Create `/etc/mihomo/config.yaml`:
+
+```bash
+sudo nano /etc/mihomo/config.yaml
+```
+
+A minimal configuration is:
+
+```yaml
+mixed-port: 7890
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: info
+ipv6: true
+
+proxies:
+  - name: DIRECT
+    type: direct
+    udp: true
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - DIRECT
+
+rules:
+  - MATCH,DIRECT
+```
+
+This configuration does not contain a remote proxy yet, but it is useful for checking the executable, YAML syntax, ports, and service setup.
+
+### 2.4 Validate the configuration
+
+Before restarting a production service, test the configuration:
+
+```bash
+sudo mihomo -t -d /etc/mihomo -f /etc/mihomo/config.yaml
+```
+
+Then run it in the foreground:
+
+```bash
+sudo mihomo -d /etc/mihomo
+```
+
+In another terminal:
+
+```bash
+curl -x http://127.0.0.1:7890 https://www.gstatic.com/generate_204 -I
+```
+
+Stop the foreground instance with `Ctrl+C` after confirming that it works.
+
+## 3. Run Mihomo with systemd
+
+The official documentation recommends running Mihomo as a `systemd` service. Create:
+
+```bash
+sudo nano /etc/systemd/system/mihomo.service
+```
+
+with:
+
+```ini
+[Unit]
+Description=mihomo Daemon, Another Clash Kernel.
+After=network.target NetworkManager.service systemd-networkd.service iwd.service
+
+[Service]
+Type=simple
+LimitNPROC=500
+LimitNOFILE=1000000
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+Restart=always
+RestartSec=3
+ExecStartPre=/usr/bin/sleep 1s
+ExecStart=/usr/local/bin/mihomo -d /etc/mihomo
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Reload and start the service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now mihomo
+```
+
+Useful commands:
+
+```bash
+sudo systemctl status mihomo
+sudo systemctl restart mihomo
+sudo systemctl reload mihomo
+sudo journalctl -u mihomo -f
+```
+
+A reliable configuration-update workflow is:
+
+```bash
+sudo mihomo -t -d /etc/mihomo -f /etc/mihomo/config.yaml \
+  && sudo systemctl reload mihomo
+```
+
+This avoids reloading an obviously invalid YAML configuration.
+
+## 4. Use Mihomo from a Linux shell
+
+Assume the local proxy is listening on:
+
+```text
+127.0.0.1:7890
+```
+
+`mixed-port` accepts both HTTP proxy and SOCKS traffic.
+
+### 4.1 One-off commands
+
+HTTP proxy:
+
+```bash
+curl -x http://127.0.0.1:7890 https://github.com
+```
+
+SOCKS5 with remote hostname resolution:
+
+```bash
+curl --proxy socks5h://127.0.0.1:7890 https://github.com
+```
+
+The `h` in `socks5h` is important: the hostname is passed to the proxy instead of being resolved locally by `curl` first.
+
+### 4.2 Proxy the current shell
+
+```bash
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+export HTTP_PROXY="$http_proxy"
+export HTTPS_PROXY="$https_proxy"
+```
+
+For programs that support `ALL_PROXY`:
+
+```bash
+export all_proxy=socks5h://127.0.0.1:7890
+export ALL_PROXY="$all_proxy"
+```
+
+Check:
+
+```bash
+curl -I https://github.com
+```
+
+Disable the shell proxy:
+
+```bash
+unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY all_proxy ALL_PROXY
+```
+
+### 4.3 Convenience functions
+
+For a research server, it is convenient to add the following to `~/.bashrc` or `~/.zshrc`:
+
+```bash
+proxy_on() {
+  export http_proxy="http://127.0.0.1:7890"
+  export https_proxy="http://127.0.0.1:7890"
+  export HTTP_PROXY="$http_proxy"
+  export HTTPS_PROXY="$https_proxy"
+  export all_proxy="socks5h://127.0.0.1:7890"
+  export ALL_PROXY="$all_proxy"
+  echo "Proxy enabled: 127.0.0.1:7890"
+}
+
+proxy_off() {
+  unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY all_proxy ALL_PROXY
+  echo "Proxy disabled"
+}
+```
+
+Reload the shell:
+
+```bash
+source ~/.bashrc
+```
+
+Then:
+
+```bash
+proxy_on
+proxy_off
+```
+
+### 4.4 Git
+
+Temporary shell environment variables are usually sufficient. If a persistent Git configuration is desired:
+
+```bash
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
+```
+
+Remove it with:
+
+```bash
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+### 4.5 pip and other scientific tooling
+
+Most Python package tools respect `http_proxy` and `https_proxy`, so the simplest pattern is:
+
+```bash
+proxy_on
+pip install <package>
+```
+
+The same environment-variable approach is also commonly respected by `wget`, Conda/Mamba, Hugging Face clients, and many Python HTTP libraries.
+
+::: {.callout-tip}
+For reproducible server workflows, prefer temporary shell proxy variables over permanently changing every application's configuration. This makes it obvious when traffic is intended to use Mihomo.
+:::
+
+## 5. Understanding `config.yaml`
+
+Mihomo uses YAML. YAML is case-sensitive, hierarchy is indentation-based, and tabs must not be used for indentation.
+
+A practical server configuration usually has five conceptual layers:
+
+```text
+Inbound port
+    ↓
+Proxy providers / proxy nodes
+    ↓
+Proxy groups
+    ↓
+Routing rules
+    ↓
+DNS / optional TUN routing
+```
+
+The following sections describe each layer.
+
+## 6. Global settings
+
+A conservative local-server configuration begins with:
+
+```yaml
+mixed-port: 7890
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: info
+ipv6: true
+```
+
+### `mixed-port`
+
+```yaml
+mixed-port: 7890
+```
+
+Creates a combined HTTP/SOCKS proxy listener. For command-line server use, one mixed port is usually simpler than maintaining separate HTTP and SOCKS ports.
+
+### `allow-lan` and `bind-address`
+
+```yaml
+allow-lan: false
+bind-address: 127.0.0.1
+```
+
+This keeps the proxy local to the server. Do not expose the proxy port publicly unless there is a specific reason and appropriate authentication/firewall protection.
+
+### `mode`
+
+```yaml
+mode: rule
+```
+
+Common modes are:
+
+- `rule`: evaluate the `rules` section;
+- `global`: send traffic through the selected global strategy;
+- `direct`: bypass proxying.
+
+For servers, `rule` is normally the most useful mode.
+
+### `log-level`
+
+```yaml
+log-level: info
+```
+
+Use `debug` temporarily when diagnosing routing, DNS, or provider problems; switch back to `info` afterward to avoid excessive logs.
+
+## 7. Load a subscription with `proxy-providers`
+
+Instead of copying all nodes directly into `config.yaml`, use a provider:
+
+```yaml
+proxy-providers:
+  main:
+    type: http
+    url: "YOUR_SUBSCRIPTION_URL"
+    path: ./providers/main.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 5000
+      lazy: true
+```
+
+Important fields:
+
+- `type: http`: download the provider from a URL;
+- `url`: subscription URL;
+- `path`: local cached provider file;
+- `interval`: provider refresh interval in seconds;
+- `health-check`: node availability/latency testing.
+
+Because Mihomo restricts provider paths to its home directory by default, placing providers below `/etc/mihomo` works naturally when the service runs with `-d /etc/mihomo`.
+
+::: {.callout-warning}
+Treat subscription URLs as secrets. Do not commit a real subscription URL to a public academic-site repository.
+:::
+
+## 8. Proxy groups
+
+A provider gives Mihomo a set of nodes. A proxy group defines **how a node is selected**.
+
+### 8.1 Automatic latency selection
+
+```yaml
+proxy-groups:
+  - name: AUTO
+    type: url-test
+    use:
+      - main
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+```
+
+`url-test` periodically checks available nodes and automatically selects a low-latency node. `tolerance` reduces unnecessary switching when latency differences are small.
+
+### 8.2 Manual selection
+
+```yaml
+  - name: PROXY
+    type: select
+    proxies:
+      - AUTO
+      - DIRECT
+    use:
+      - main
+```
+
+The group now contains:
+
+- the automatically selected `AUTO` group;
+- every node from provider `main`;
+- `DIRECT`.
+
+This makes `PROXY` a useful top-level policy group.
+
+### 8.3 Automatic failover
+
+For workloads where availability is more important than minimum latency:
+
+```yaml
+  - name: FALLBACK
+    type: fallback
+    use:
+      - main
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+```
+
+A `fallback` group selects the first available node according to its configured order.
+
+## 9. Routing rules
+
+Rules are evaluated **top to bottom**. The first match wins, so specific rules should appear before general rules.
+
+### 9.1 Strategy A: proxy selected services, direct by default
+
+This is a conservative server strategy:
+
+```yaml
+rules:
+  - DOMAIN,localhost,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+
+  - DOMAIN-SUFFIX,github.com,PROXY
+  - DOMAIN-SUFFIX,githubusercontent.com,PROXY
+  - DOMAIN-SUFFIX,huggingface.co,PROXY
+  - DOMAIN-SUFFIX,hf.co,PROXY
+
+  - MATCH,DIRECT
+```
+
+This is appropriate if the server only needs proxy access for selected development/research services.
+
+### 9.2 Strategy B: proxy by default
+
+If most external traffic should use the proxy:
+
+```yaml
+rules:
+  - DOMAIN,localhost,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - MATCH,PROXY
+```
+
+This is simpler but has a larger behavioral impact. On shared or production servers, use it only when that is intentional.
+
+### 9.3 Common rule types
+
+Examples:
+
+```yaml
+- DOMAIN,example.com,PROXY
+- DOMAIN-SUFFIX,github.com,PROXY
+- DOMAIN-KEYWORD,google,PROXY
+- IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+- PROCESS-NAME,python,PROXY
+- MATCH,PROXY
+```
+
+Mihomo also supports rule sets with `RULE-SET`, logical rules, port rules, UID rules on Linux, and process-name matching.
+
+## 10. Rule providers
+
+For large routing policies, avoid putting thousands of lines directly in `config.yaml`. Use `rule-providers`:
+
+```yaml
+rule-providers:
+  example_domains:
+    type: http
+    behavior: domain
+    format: mrs
+    url: "https://example.org/example-domains.mrs"
+    path: ./rules/example-domains.mrs
+    interval: 86400
+```
+
+Then reference the set:
+
+```yaml
+rules:
+  - RULE-SET,example_domains,PROXY
+  - MATCH,DIRECT
+```
+
+Provider `behavior` can be `domain`, `ipcidr`, or `classical`, and supported formats include `yaml`, `text`, and `mrs`. The provider's behavior must match the actual rule-set content.
+
+## 11. DNS configuration
+
+For simple shell-level HTTP/SOCKS proxying, an elaborate DNS section is not always necessary. DNS configuration becomes more important when:
+
+- routing rules depend on resolved IPs;
+- proxy server hostnames need controlled resolution;
+- TUN mode is enabled;
+- fake-IP mode is used.
+
+A moderate starting point is:
+
+```yaml
+dns:
+  enable: true
+  ipv6: true
+
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+```
+
+`default-nameserver` is used to bootstrap DNS server hostnames. `proxy-server-nameserver` is specifically useful for resolving hostnames of proxy nodes and can avoid circular dependencies in more complex DNS routing.
+
+If your server is outside mainland China, replace these resolvers with DNS services suitable for that network environment.
+
+## 12. External controller and web UI
+
+Mihomo can expose a REST API:
+
+```yaml
+external-controller: 127.0.0.1:9090
+secret: "CHANGE_THIS_TO_A_RANDOM_SECRET"
+```
+
+Keep the controller on loopback for a remote server. If a web dashboard is needed, access it through an SSH tunnel rather than binding the API directly to the public interface.
+
+For example, from a local workstation:
+
+```bash
+ssh -L 9090:127.0.0.1:9090 user@server
+```
+
+The official MetaCubeX dashboard is MetaCubeXD. Mihomo can also download an external UI through `external-ui-url`, but a web panel is optional for a headless research server.
+
+## 13. Optional TUN mode
+
+TUN mode routes traffic transparently and can capture programs that do not support proxy environment variables.
+
+A typical Linux configuration is:
+
+```yaml
+tun:
+  enable: true
+  stack: mixed
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+```
+
+On Linux, `auto-redirect` automatically configures the required redirect rules and requires `auto-route`.
+
+::: {.callout-important}
+## TUN on a remote SSH server
+
+Enabling TUN changes routing behavior at the operating-system level. A bad rule, DNS configuration, or interface selection can make the server unreachable.
+
+Before enabling TUN remotely:
+
+1. keep a second SSH session open;
+2. use `tmux` or `screen`;
+3. ensure cloud-console or out-of-band access is available;
+4. explicitly keep management/private networks on `DIRECT`;
+5. validate the configuration with `mihomo -t`;
+6. test before enabling the service permanently.
+
+For most research-server use cases, `mixed-port` plus `proxy_on`/`proxy_off` is simpler and safer.
+:::
+
+## 14. Recommended server `config.yaml`
+
+The following is a compact baseline for a single-user research server. Replace only the subscription URL and controller secret before use.
+
+```yaml
+mixed-port: 7890
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: info
+ipv6: true
+
+external-controller: 127.0.0.1:9090
+secret: "CHANGE_THIS_TO_A_RANDOM_SECRET"
+
+profile:
+  store-selected: true
+
+proxy-providers:
+  main:
+    type: http
+    url: "YOUR_SUBSCRIPTION_URL"
+    path: ./providers/main.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 5000
+      lazy: true
+
+proxies:
+  - name: DIRECT
+    type: direct
+    udp: true
+
+proxy-groups:
+  - name: AUTO
+    type: url-test
+    use:
+      - main
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+
+  - name: PROXY
+    type: select
+    proxies:
+      - AUTO
+      - DIRECT
+    use:
+      - main
+
+dns:
+  enable: true
+  ipv6: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+rules:
+  - DOMAIN,localhost,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+
+  - DOMAIN-SUFFIX,github.com,PROXY
+  - DOMAIN-SUFFIX,githubusercontent.com,PROXY
+  - DOMAIN-SUFFIX,huggingface.co,PROXY
+  - DOMAIN-SUFFIX,hf.co,PROXY
+
+  - MATCH,DIRECT
+```
+
+For an "everything external goes through Mihomo" server, replace the final rule with:
+
+```yaml
+- MATCH,PROXY
+```
+
+## 15. Configuration update workflow
+
+Whenever `config.yaml` changes:
+
+```bash
+sudo mihomo -t -d /etc/mihomo -f /etc/mihomo/config.yaml
+```
+
+If validation passes:
+
+```bash
+sudo systemctl reload mihomo
+```
+
+If reload behavior is uncertain after a structural configuration change, restart instead:
+
+```bash
+sudo systemctl restart mihomo
+```
+
+Then inspect logs:
+
+```bash
+sudo journalctl -u mihomo -n 100 --no-pager
+```
+
+## 16. Troubleshooting
+
+### Port 7890 is not listening
+
+```bash
+ss -lntp | grep 7890
+sudo systemctl status mihomo
+sudo journalctl -u mihomo -n 100 --no-pager
+```
+
+### Configuration syntax error
+
+```bash
+sudo mihomo -t -d /etc/mihomo -f /etc/mihomo/config.yaml
+```
+
+Check YAML indentation and remember that tabs are not allowed.
+
+### Provider cannot be downloaded
+
+Check:
+
+```bash
+sudo journalctl -u mihomo -f
+```
+
+Typical causes include an invalid/expired subscription URL, GitHub/network reachability problems, DNS failure, or an incorrect provider format.
+
+### `curl` still connects directly
+
+Inspect the environment:
+
+```bash
+env | grep -i proxy
+```
+
+Then force a one-off test:
+
+```bash
+curl -x http://127.0.0.1:7890 https://github.com -I
+```
+
+### SOCKS DNS behavior differs from HTTP
+
+Use:
+
+```bash
+socks5h://127.0.0.1:7890
+```
+
+rather than `socks5://` when the hostname should be resolved through the proxy path.
+
+### TUN breaks connectivity
+
+First disable TUN in `/etc/mihomo/config.yaml`:
+
+```yaml
+tun:
+  enable: false
+```
+
+Then validate and restart:
+
+```bash
+sudo mihomo -t -d /etc/mihomo -f /etc/mihomo/config.yaml \
+  && sudo systemctl restart mihomo
+```
+
+If SSH itself is already broken, recovery requires another existing session or out-of-band console access.
+
+## 17. Security notes
+
+For a Linux server:
+
+- keep `mixed-port` bound to `127.0.0.1` unless remote clients explicitly need it;
+- keep `external-controller` on `127.0.0.1`;
+- use a strong `secret` for the API;
+- do not commit subscription URLs, credentials, node UUIDs, passwords, or controller secrets to Git;
+- prefer SSH port forwarding for dashboard access;
+- validate configuration before reload/restart;
+- use TUN only when transparent routing is actually required.
+
+A useful repository pattern is to commit a sanitized `config.example.yaml` and keep the real `/etc/mihomo/config.yaml` only on the server.
+
+## References
+
+- [Mihomo documentation](https://wiki.metacubex.one/en/)
+- [Installation](https://wiki.metacubex.one/startup/)
+- [Create a running service](https://wiki.metacubex.one/en/startup/service/)
+- [General configuration](https://wiki.metacubex.one/en/config/general/)
+- [Proxy providers](https://wiki.metacubex.one/en/config/proxy-providers/)
+- [Proxy groups](https://wiki.metacubex.one/en/config/proxy-groups/)
+- [Routing rules](https://wiki.metacubex.one/en/config/rules/)
+- [Rule providers](https://wiki.metacubex.one/en/config/rule-providers/)
+- [DNS](https://wiki.metacubex.one/en/config/dns/)
+- [TUN](https://wiki.metacubex.one/en/config/inbound/tun/)
+- [MetaCubeXD](https://github.com/MetaCubeX/metacubexd)

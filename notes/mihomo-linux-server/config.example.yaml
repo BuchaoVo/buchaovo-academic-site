@@ -1,0 +1,88 @@
+# Mihomo baseline configuration for a single-user Linux research server.
+# Keep the real subscription URL and controller secret out of public Git repositories.
+
+mixed-port: 7890
+allow-lan: false
+bind-address: 127.0.0.1
+mode: rule
+log-level: info
+ipv6: true
+
+external-controller: 127.0.0.1:9090
+secret: "CHANGE_THIS_TO_A_RANDOM_SECRET"
+
+profile:
+  store-selected: true
+
+proxy-providers:
+  main:
+    type: http
+    url: "YOUR_SUBSCRIPTION_URL"
+    path: ./providers/main.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+      timeout: 5000
+      lazy: true
+
+proxies:
+  - name: DIRECT
+    type: direct
+    udp: true
+
+proxy-groups:
+  - name: AUTO
+    type: url-test
+    use:
+      - main
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+
+  - name: PROXY
+    type: select
+    proxies:
+      - AUTO
+      - DIRECT
+    use:
+      - main
+
+dns:
+  enable: true
+  ipv6: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+rules:
+  - DOMAIN,localhost,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+
+  - DOMAIN-SUFFIX,github.com,PROXY
+  - DOMAIN-SUFFIX,githubusercontent.com,PROXY
+  - DOMAIN-SUFFIX,huggingface.co,PROXY
+  - DOMAIN-SUFFIX,hf.co,PROXY
+
+  - MATCH,DIRECT
+
+# Optional TUN mode. Enable only after normal mixed-port mode is working.
+# tun:
+#   enable: true
+#   stack: mixed
+#   auto-route: true
+#   auto-redirect: true
+#   auto-detect-interface: true
+#   dns-hijack:
+#     - any:53
+#     - tcp://any:53
